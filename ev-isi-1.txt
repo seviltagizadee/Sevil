@@ -1,0 +1,56 @@
+jshell> int age = 7;
+age ==> 7
+
+jshell> age = 14;
+age ==> 14
+
+jshell> byte b = 7;
+b ==> 7
+
+jshell> short s = 7
+s ==> 7
+
+jshell> long l = 7;
+l ==> 7
+
+jshell> double d = 7.9D;
+d ==> 7.9
+
+jshell> float f = 7.9F;
+f ==> 7.9
+
+jshell> char c = 'A';
+c ==> 'A'
+
+jshell> boolean hasHome = true;
+hasHome ==> true
+
+jshell> System.out.println("class");
+class
+
+jshell> System.out.println("return");
+return
+
+jshell> System.out.println("for");
+for
+
+jshell> System.out.println("do");
+do
+
+jshell> System.out.println("if");
+if
+
+jshell> System.out.println("static");
+static
+
+jshell> System.out.println("private");
+private
+
+jshell> System.out.println("final");
+final
+
+jshell> System.out.println("else");
+else
+
+jshell> System.out.println("case");
+case
