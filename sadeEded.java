@@ -4,7 +4,7 @@ public class sadeEded {
     public static void main(String[] args) {
        for (int i=0;i<72;i++){
            int count = 0;
-           for (int j=1;j<71;j++){
+           for (int j=1;j<72;j++){
                if (i%j==0){
                    count++;
                }
