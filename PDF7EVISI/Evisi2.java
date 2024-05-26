@@ -27,6 +27,16 @@ public class Evisi2 {
             System.out.println("Setir bos deyil");
         }
 
+        //5
+//            Random random = new Random();
+//            int randomNumber = random.nextInt(10,30);
+//            System.out.println(randomNumber);
+
+
+        //6
+        double num= 123.4567;
+        String result = String.format("%.2f",num);
+        System.out.println(result);
 
         //4
        boolean netice = Yoxlama("Sevil Tagizade","Tagizade");
@@ -41,4 +51,6 @@ public class Evisi2 {
         }
 
 
+
 }
+
