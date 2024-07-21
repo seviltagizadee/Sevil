@@ -1,19 +1,18 @@
-package developia.spring;
+package developia.spring.model;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Person {
-    int id;
-    String name;
-    int age;
-    double salary;
+public class Employee {
+    private int id;
+    private String name;
+    private int age;
+    private Computer computer;
 
-    public Person(){
-        id = 12;
-        name = "Sevil";
+    public Employee(){
+        id =15;
+        name ="Nicat";
         age = 19;
-        salary =1500;
     }
 
     public int getId() {
@@ -40,11 +39,11 @@ public class Person {
         this.age = age;
     }
 
-    public double getSalary() {
-        return salary;
+    public Computer getComputer() {
+        return computer;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setComputer(Computer computer) {
+        this.computer = computer;
     }
 }
