@@ -11,7 +11,7 @@ public class Car {
     private Long id;
     private String brand;
     private int price;
-    @Column(name = "registerDate")
+    @Column(name = "register_date")
     LocalDate registerDate;
 
     public Car( String brand, int price, LocalDate registerDate) {

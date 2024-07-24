@@ -19,7 +19,13 @@ public class CarController {
         LocalDate localDateBmw =LocalDate.of(2023,5,25);
         Car car1 = new Car("BMW",100_000,localDateBmw);
         repo.save(car1);
+
         LocalDate localDateToyoto =LocalDate.of(2023,7,5);
         Car car2 = new Car("Toyoto",20_000,localDateToyoto);
+        repo.save(car2);
+
+        LocalDate localDateMercedes =LocalDate.of(2024,2,20);
+        Car car3 = new Car("Mercedes",30_000,localDateMercedes);
+        repo.save(car3);
     }
 }
