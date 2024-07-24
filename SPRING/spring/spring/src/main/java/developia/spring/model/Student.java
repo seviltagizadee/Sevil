@@ -1,7 +1,6 @@
 package developia.spring.model;
 
 import com.fasterxml.jackson.databind.BeanProperty;
-
 public class Student {
     private int id;
     private String name;
