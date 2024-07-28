@@ -46,4 +46,13 @@ public class Car {
     public void setRegisterDate(LocalDate registerDate) {
         this.registerDate = registerDate;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
