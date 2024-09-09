@@ -1,4 +1,4 @@
-package Projects.Library;
+package library.Library;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
