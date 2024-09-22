@@ -1,20 +1,25 @@
 package library.Library.service;
 
 
+import library.Library.entity.BookRegistrationEntity;
 import library.Library.request.BookAddRequestDTO;
 import library.Library.request.BookUpdateRequestDTO;
 import library.Library.response.BookListResponseDTO;
 import library.Library.response.BookResponseDTO;
+import library.Library.response.BookUpdateResponseDTO;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 
 public interface BookService {
-    void addBook(BookAddRequestDTO bookAddRequest);
+    ResponseEntity<BookListResponseDTO> addBook(BookAddRequestDTO bookAddRequest);
 
-    void updateBook(BookUpdateRequestDTO request);
+    ResponseEntity<BookUpdateResponseDTO> update(BookUpdateRequestDTO bookUpdateRequestDTO);
 
     void deleteBook(Long id);
 
-    BookListResponseDTO findAll();
+    ResponseEntity<List<BookRegistrationEntity>> findAll();
 
     BookResponseDTO findBYId(Long id);
 }

@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
-@Table(name = "library")
+@Table(name = "books")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,6 +26,10 @@ public class BookRegistrationEntity {
     private int quantity;
 
     private String publishedDate;
+
+    private LocalDate registrationDate;
+
+    private LocalDate updatedDate;
 
 }
 
