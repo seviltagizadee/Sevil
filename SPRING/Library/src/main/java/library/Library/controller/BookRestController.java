@@ -11,6 +11,7 @@ import library.Library.response.BookUpdateResponseDTO;
 import library.Library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -23,12 +24,13 @@ public class BookRestController {
 
     private final BookService service;
 
+    @PreAuthorize(value = "hasAuthority('ROLE_ADD_BOOK')")
     @PostMapping("/add")
     public ResponseEntity<BookListResponseDTO> add(@RequestBody @Valid BookAddRequestDTO requestDTO) {
         return service.addBook(requestDTO);
     }
 
-
+    @PreAuthorize(value = "hasAuthority('ROLE_UPDATE_BOOK')")
     @PutMapping
     public ResponseEntity<BookUpdateResponseDTO> updateBook(@RequestBody @Valid BookUpdateRequestDTO requestDTO) {
         return service.update(requestDTO);
