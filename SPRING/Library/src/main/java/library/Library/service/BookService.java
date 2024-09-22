@@ -21,5 +21,5 @@ public interface BookService {
 
     ResponseEntity<List<BookRegistrationEntity>> findAll();
 
-    BookResponseDTO findBYId(Long id);
+    BookResponseDTO findById(Long id);
 }

@@ -3,6 +3,7 @@ package library.Library.service;
 
 import library.Library.entity.BookRegistrationEntity;
 import library.Library.exception.BookNotFoundException;
+import library.Library.exception.OurException;
 import library.Library.repository.BookRegRepository;
 import library.Library.request.BookAddRequestDTO;
 import library.Library.request.BookUpdateRequestDTO;
@@ -25,17 +26,17 @@ import java.util.Optional;
 public class BookServiceImpl implements BookService {
     private final BookRegRepository repository;
 
- //   private final ModelMapper mapper;
+    private final ModelMapper mapper;
 
     @Override
     public ResponseEntity<BookListResponseDTO> addBook(BookAddRequestDTO bookAddRequest) {
 
         BookRegistrationEntity book = new BookRegistrationEntity();
-        book.setBookName(bookAddRequest.getBookName());
-        book.setAuthor(bookAddRequest.getAuthor());
-        book.setQuantity(bookAddRequest.getQuantity());
-        book.setPublishedDate(bookAddRequest.getPublishedDate());
-      //  mapper.map(bookAddRequest,book);
+//        book.setBookName(bookAddRequest.getBookName());
+//        book.setAuthor(bookAddRequest.getAuthor());
+//        book.setQuantity(bookAddRequest.getQuantity());
+//        book.setPublishedDate(bookAddRequest.getPublishedDate());
+        mapper.map(bookAddRequest,book);
         book.setRegistrationDate(LocalDate.now());
         book.setUpdatedDate(LocalDate.now());
 
@@ -50,20 +51,18 @@ public class BookServiceImpl implements BookService {
     @Override
     public ResponseEntity<BookUpdateResponseDTO> update(BookUpdateRequestDTO bookUpdateRequest) {
         Long id = bookUpdateRequest.getId();
-        Optional<BookRegistrationEntity> book = repository.findById(id);
-        if (book.isPresent()) {
-            BookRegistrationEntity updatedBook = book.get();
-            updatedBook.setBookName(bookUpdateRequest.getBookName());
-            updatedBook.setAuthor(bookUpdateRequest.getAuthor());
-            updatedBook.setQuantity(bookUpdateRequest.getQuantity());
-            updatedBook.setPublishedDate(bookUpdateRequest.getPublishedDate());
-         //   mapper.map(bookUpdateRequest, updatedBook);
-            updatedBook.setUpdatedDate(LocalDate.now());
-            repository.save(updatedBook);
-        }
-        else {
-            throw new BookNotFoundException("Book not found" + id);
-        }
+        BookRegistrationEntity book = repository.findById(id)
+                .orElseThrow(() -> new BookNotFoundException("Book not Found"));
+
+//            updatedBook.setBookName(bookUpdateRequest.getBookName());
+//            updatedBook.setAuthor(bookUpdateRequest.getAuthor());
+//            updatedBook.setQuantity(bookUpdateRequest.getQuantity());
+//            updatedBook.setPublishedDate(bookUpdateRequest.getPublishedDate());
+
+            mapper.map(bookUpdateRequest, book);
+            book.setUpdatedDate(LocalDate.now());
+
+            repository.save(book);
 
         BookUpdateResponseDTO responseDTO = new BookUpdateResponseDTO();
         responseDTO.setMessage("Updated successfully");
@@ -79,12 +78,16 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ResponseEntity<List<BookRegistrationEntity>> findAll() {
-        return null;
+        List<BookRegistrationEntity> books = repository.findAll();
+        return ResponseEntity.ok(books);
     }
 
 
     @Override
-    public BookResponseDTO findBYId(Long id) {
-        return null;
+    public BookResponseDTO findById(Long id) {
+        BookRegistrationEntity entity = repository.findById(id).orElseThrow(() -> new BookNotFoundException("Book not found"));
+        BookResponseDTO responseDTO = new BookResponseDTO();
+        mapper.map(entity, responseDTO);
+        return responseDTO;
     }
 }
