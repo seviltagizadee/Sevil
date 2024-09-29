@@ -1,5 +1,6 @@
 package library.Library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,11 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
+    @Id
     @NotNull
-    @Column(unique = true)
     private String username;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user") // mappedby-neden asili oldugunu gosterir
     private StudentEntity student;
 

@@ -34,11 +34,11 @@ public class StudentEntity {
     private String email;
 
 
-    @Column(unique = true)
+    @Column(unique = true, insertable = false, updatable = false)
     private String username;
 
     @OneToOne
-    @JoinColumn(name = "user_id", unique = true)
+    @JoinColumn(name = "username", referencedColumnName = "username", unique = true)
     private User user;
 
 }
